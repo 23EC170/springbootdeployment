@@ -1,12 +1,9 @@
-FROM maven:3.8.5-openjdk-21 AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-FROM openjdk:21.0.1-jdk-slim
-WORKDIR /app
+FROM eclipse-temurin:21-jdk
 COPY --from=build /app/target/*.jar springbootfirst.jar
-EXPOSE 3001
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "springbootfirst.jar"]
-
-
