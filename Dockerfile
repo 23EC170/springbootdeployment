@@ -8,3 +8,5 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar springbootfirst.jar
 EXPOSE 3001
 ENTRYPOINT ["java", "-jar", "springbootfirst.jar"]
+
+
